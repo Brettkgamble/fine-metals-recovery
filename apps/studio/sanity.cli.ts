@@ -11,7 +11,7 @@ export default defineCliConfig({
   },
   studioHost:
     host && host !== "main"
-      ? `${host}-turbo-start-sanity`
-      : "turbo-start-sanity",
+      ? `${host}-precious-metals-recovery`
+      : "precious-metals-recovery",
   autoUpdates: false,
 });
