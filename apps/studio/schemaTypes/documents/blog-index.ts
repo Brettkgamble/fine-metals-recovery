@@ -42,6 +42,35 @@ export const blogIndex = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "categories",
+      type: "array",
+      title: "Categories",
+      description: "The categories that your blog post belongs to",
+      of: [
+        defineArrayMember({
+          type: "reference",
+          to: [
+            {
+              type: "category",
+              options: {
+                disableNew: true,
+              },
+            },
+          ],
+          options: {
+            disableNew: true,
+          },
+        }),
+      ],
+      validation: (Rule) => [
+        Rule.required(),
+        Rule.max(1),
+        Rule.min(1),
+        Rule.unique(),
+      ],
+      group: GROUP.MAIN_CONTENT,
+    }),
+    defineField({
       name: "displayFeaturedBlogs",
       title: "Display Featured Blogs",
       description:
@@ -84,11 +113,15 @@ export const blogIndex = defineType({
   preview: {
     select: {
       title: "title",
+      category: "categories.0.category",
+      media: "image",
       description: "description",
       slug: "slug.current",
     },
-    prepare: ({ title, description, slug }) => ({
+    prepare: ({ title, category, description, slug }) => ({
       title: title || "Untitled Blog Index",
+      category: category || "Untitled Category",
+      media: "📝",
       subtitle: description || slug || "Blog Index",
     }),
   },

@@ -78,6 +78,35 @@ export const blog = defineType({
       ],
     }),
     defineField({
+      name: "categories",
+      type: "array",
+      title: "Categories",
+      description: "The categories that your blog post belongs to",
+      of: [
+        defineArrayMember({
+          type: "reference",
+          to: [
+            {
+              type: "category",
+              options: {
+                disableNew: true,
+              },
+            },
+          ],
+          options: {
+            disableNew: true,
+          },
+        }),
+      ],
+      validation: (Rule) => [
+        Rule.required(),
+        Rule.max(1),
+        Rule.min(1),
+        Rule.unique(),
+      ],
+      group: GROUP.MAIN_CONTENT,
+    }),
+    defineField({
       name: "authors",
       type: "array",
       title: "Authors",
@@ -140,6 +169,8 @@ export const blog = defineType({
   preview: {
     select: {
       title: "title",
+      category: "categories.0.category",
+      description: "description",
       media: "image",
       isPrivate: "seoNoIndex",
       isHidden: "seoHideFromLists",
@@ -149,6 +180,7 @@ export const blog = defineType({
     },
     prepare: ({
       title,
+      category,
       media,
       slug,
       isPrivate,
@@ -171,6 +203,7 @@ export const blog = defineType({
 
       return {
         title: title || "Untitled Blog",
+        category: category || "No Category",
         media,
         subtitle: `${visibility} | ${authorInfo} | ${dateInfo}`,
       };

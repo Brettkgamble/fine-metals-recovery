@@ -725,7 +725,7 @@
           "value": {
             "type": "string"
           },
-          "optional": false
+          "optional": true
         },
         "richText": {
           "type": "objectAttribute",
@@ -1025,14 +1025,14 @@
                   "value": {
                     "type": "string"
                   },
-                  "optional": false
+                  "optional": true
                 },
                 "description": {
                   "type": "objectAttribute",
                   "value": {
                     "type": "string"
                   },
-                  "optional": false
+                  "optional": true
                 },
                 "image": {
                   "type": "objectAttribute",
@@ -1162,7 +1162,7 @@
           "value": {
             "type": "string"
           },
-          "optional": false
+          "optional": true
         },
         "subtitle": {
           "type": "objectAttribute",
@@ -1244,7 +1244,7 @@
               }
             }
           },
-          "optional": false
+          "optional": true
         }
       }
     }
@@ -2839,7 +2839,7 @@
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "columns": {
         "type": "objectAttribute",
@@ -2916,7 +2916,7 @@
                         }
                       }
                     },
-                    "optional": false
+                    "optional": true
                   },
                   "_type": {
                     "type": "objectAttribute",
@@ -3045,7 +3045,7 @@
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "subtitle": {
         "type": "objectAttribute",
@@ -3178,21 +3178,21 @@
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "siteTitle": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "siteDescription": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "logo": {
         "type": "objectAttribute",
@@ -3371,7 +3371,51 @@
           "type": "inline",
           "name": "slug"
         },
-        "optional": false
+        "optional": true
+      },
+      "categories": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "array",
+          "of": {
+            "type": "object",
+            "attributes": {
+              "_ref": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                }
+              },
+              "_type": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string",
+                  "value": "reference"
+                }
+              },
+              "_weak": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "boolean"
+                },
+                "optional": true
+              }
+            },
+            "dereferencesTo": "category",
+            "rest": {
+              "type": "object",
+              "attributes": {
+                "_key": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "optional": true
       },
       "displayFeaturedBlogs": {
         "type": "objectAttribute",
@@ -3573,7 +3617,7 @@
           "type": "inline",
           "name": "slug"
         },
-        "optional": false
+        "optional": true
       },
       "pageBuilder": {
         "type": "objectAttribute",
@@ -3722,7 +3766,7 @@
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "position": {
         "type": "objectAttribute",
@@ -3849,7 +3893,7 @@
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "richText": {
         "type": "objectAttribute",
@@ -3901,7 +3945,7 @@
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "description": {
         "type": "objectAttribute",
@@ -3916,7 +3960,7 @@
           "type": "inline",
           "name": "slug"
         },
-        "optional": false
+        "optional": true
       },
       "image": {
         "type": "objectAttribute",
@@ -4102,6 +4146,57 @@
     }
   },
   {
+    "name": "category",
+    "type": "document",
+    "attributes": {
+      "_id": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_type": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string",
+          "value": "category"
+        }
+      },
+      "_createdAt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_updatedAt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_rev": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "category": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "description": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      }
+    }
+  },
+  {
     "name": "blog",
     "type": "document",
     "attributes": {
@@ -4148,7 +4243,7 @@
         "value": {
           "type": "string"
         },
-        "optional": false
+        "optional": true
       },
       "description": {
         "type": "objectAttribute",
@@ -4163,7 +4258,51 @@
           "type": "inline",
           "name": "slug"
         },
-        "optional": false
+        "optional": true
+      },
+      "categories": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "array",
+          "of": {
+            "type": "object",
+            "attributes": {
+              "_ref": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                }
+              },
+              "_type": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string",
+                  "value": "reference"
+                }
+              },
+              "_weak": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "boolean"
+                },
+                "optional": true
+              }
+            },
+            "dereferencesTo": "category",
+            "rest": {
+              "type": "object",
+              "attributes": {
+                "_key": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "optional": true
       },
       "authors": {
         "type": "objectAttribute",
@@ -4207,7 +4346,7 @@
             }
           }
         },
-        "optional": false
+        "optional": true
       },
       "publishedAt": {
         "type": "objectAttribute",
@@ -4283,7 +4422,7 @@
             }
           }
         },
-        "optional": false
+        "optional": true
       },
       "richText": {
         "type": "objectAttribute",
@@ -4434,7 +4573,7 @@
               }
             ]
           },
-          "optional": false
+          "optional": true
         },
         "openInNewTab": {
           "type": "objectAttribute",
@@ -4947,7 +5086,7 @@
           "value": {
             "type": "string"
           },
-          "optional": false
+          "optional": true
         },
         "source": {
           "type": "objectAttribute",
@@ -5217,7 +5356,7 @@
             },
             "dereferencesTo": "assist.instruction.context"
           },
-          "optional": false
+          "optional": true
         }
       }
     }
@@ -5396,7 +5535,7 @@
           "value": {
             "type": "string"
           },
-          "optional": false
+          "optional": true
         },
         "description": {
           "type": "objectAttribute",

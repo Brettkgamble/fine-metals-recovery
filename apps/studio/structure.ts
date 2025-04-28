@@ -115,6 +115,8 @@ export const structure = (
         list: { type: "blog", title: "Blogs", icon: FileText },
         context,
       }),
+      createList({ S, type: "category", title: "Categories", icon: User }),
+      S.divider(),
       createList({
         S,
         type: "faq",

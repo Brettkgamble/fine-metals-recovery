@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { defineQuery } from "next-sanity";
 
 // Base fragments for reusable query parts
@@ -44,6 +45,14 @@ const blogAuthorFragment = /* groq */ `
   }
 `;
 
+const blogCategoryFragment = /* groq */ `
+  categories[0]->{
+    _id,
+    category,
+    description,
+  }
+`;
+
 const blogCardFragment = /* groq */ `
   _type,
   _id,
@@ -54,7 +63,8 @@ const blogCardFragment = /* groq */ `
   orderRank,
   ${imageFragment},
   publishedAt,
-  ${blogAuthorFragment}
+  ${blogAuthorFragment},
+  ${blogCategoryFragment},
 `;
 
 const buttonsFragment = /* groq */ `
@@ -202,6 +212,7 @@ export const queryBlogSlugPageData = defineQuery(`
   *[_type == "blog" && slug.current == $slug][0]{
     ...,
     "slug": slug.current,
+    ${blogCategoryFragment},
     ${blogAuthorFragment},
     ${imageFragment},
     ${richTextFragment},
