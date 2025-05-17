@@ -34,7 +34,7 @@ export default defineConfig({
         locations,
       },
       previewUrl: {
-        origin: presentationOriginUrl ?? "https://www.fine-metals-recovery.ca/",
+        origin: presentationOriginUrl ?? "https://fine-metals-recovery.ca/",
         previewMode: {
           enable: "/api/presentation-draft",
         },
