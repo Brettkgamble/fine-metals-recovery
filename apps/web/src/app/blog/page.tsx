@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { notFound } from "next/navigation";
 
 import { BlogCard, BlogHeader, FeaturedBlogCard } from "@/components/blog-card";
