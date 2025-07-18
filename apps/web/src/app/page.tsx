@@ -19,7 +19,7 @@ export async function generateMetadata() {
           title: homePageData?.title ?? homePageData?.seoTitle ?? "",
           description:
             homePageData?.description ?? homePageData?.seoDescription ?? "",
-          slug: homePageData?.slug,
+          slug: homePageData?.slug ?? "",
           contentId: homePageData?._id,
           contentType: homePageData?._type,
         }

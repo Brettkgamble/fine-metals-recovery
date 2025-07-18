@@ -82,17 +82,101 @@ export default async function BlogIndexPage() {
 
         {featuredBlogs.length > 0 && (
           <div className="mx-auto mt-8 sm:mt-12 md:mt-16 mb-12 lg:mb-20 grid grid-cols-1 gap-8 md:gap-12">
-            {featuredBlogs.map((blog) => (
-              <FeaturedBlogCard key={blog._id} blog={blog} />
-            ))}
+            {featuredBlogs.map(
+              (blog: {
+                _type: "blog";
+                _id: string;
+                title: string | null;
+                description: string | null;
+                slug: string | null;
+                richText: import("@/lib/sanity/sanity.types").RichText | null;
+                orderRank: string | null;
+                image:
+                  | {
+                      asset?: {
+                        _ref: string;
+                        _type: "reference";
+                        _weak?: boolean;
+                        [key: string]: any;
+                      };
+                      media?: unknown;
+                      hotspot?: import("@/lib/sanity/sanity.types").SanityImageHotspot;
+                      crop?: import("@/lib/sanity/sanity.types").SanityImageCrop;
+                      _type: "image";
+                      alt: string | "no-alt";
+                      blurData: string | null;
+                      dominantColor: string | null;
+                    }
+                  | {
+                      asset?: {
+                        _ref: string;
+                        _type: "reference";
+                        _weak?: boolean;
+                        [key: string]: any;
+                      };
+                      media?: unknown;
+                      hotspot?: import("@/lib/sanity/sanity.types").SanityImageHotspot;
+                      crop?: import("@/lib/sanity/sanity.types").SanityImageCrop;
+                      _type: "image";
+                    }
+                  | null;
+                publishedAt: string | null;
+                authors: any | null;
+                categories: any | null;
+              }) => (
+                <FeaturedBlogCard key={blog._id} blog={blog} />
+              ),
+            )}
           </div>
         )}
 
         {remainingBlogs.length > 0 && (
           <div className="grid grid-cols-1 gap-8 md:gap-12 lg:grid-cols-2 mt-8">
-            {remainingBlogs.map((blog) => (
-              <BlogCard key={blog._id} blog={blog} />
-            ))}
+            {remainingBlogs.map(
+              (blog: {
+                _type: "blog";
+                _id: string;
+                title: string | null;
+                description: string | null;
+                slug: string | null;
+                richText: import("@/lib/sanity/sanity.types").RichText | null;
+                orderRank: string | null;
+                image:
+                  | {
+                      asset?: {
+                        _ref: string;
+                        _type: "reference";
+                        _weak?: boolean;
+                        [key: string]: any;
+                      };
+                      media?: unknown;
+                      hotspot?: import("@/lib/sanity/sanity.types").SanityImageHotspot;
+                      crop?: import("@/lib/sanity/sanity.types").SanityImageCrop;
+                      _type: "image";
+                      alt: string | "no-alt";
+                      blurData: string | null;
+                      dominantColor: string | null;
+                    }
+                  | {
+                      asset?: {
+                        _ref: string;
+                        _type: "reference";
+                        _weak?: boolean;
+                        [key: string]: any;
+                      };
+                      media?: unknown;
+                      hotspot?: import("@/lib/sanity/sanity.types").SanityImageHotspot;
+                      crop?: import("@/lib/sanity/sanity.types").SanityImageCrop;
+                      _type: "image";
+                    }
+                  | null;
+                publishedAt: string | null;
+                authors: any | null;
+                categories: any | null;
+              }) => (
+                <BlogCard key={blog._id} blog={blog} />
+              ),
+            )}
           </div>
         )}
       </div>
