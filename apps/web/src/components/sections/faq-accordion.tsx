@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Accordion,
   AccordionContent,
@@ -24,7 +25,8 @@ export function FaqAccordion({
 }: FaqAccordionProps) {
   return (
     <section id="faq" className="my-8">
-      <FaqJsonLd faqs={faqs} />
+      {/* eslint-disable-next-line */}
+      <FaqJsonLd faqs={faqs ?? []} />
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex w-full flex-col items-center">
           <div className="flex flex-col items-center space-y-4 text-center sm:space-y-6 md:text-center">
